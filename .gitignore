@@ -1,25 +1,55 @@
-
-###> symfony/framework-bundle ###
+# Symfony specific
+/var/
+/vendor/
+/public/bundles/
 /.env.local
 /.env.local.php
 /.env.*.local
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
-/var/
-/vendor/
-###< symfony/framework-bundle ###
+/.env.test.local
+/phpunit.result.cache
+/build/
+/node_modules/
 
-###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
-###< phpunit/phpunit ###
+# Symfony Encore / Webpack
+/public/build/
+/public/uploads/
+/public/js/
+/public/css/
+/public/images/
 
-###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
+# IDE specific files
+.idea/
+.vscode/
 
-###> symfony/asset-mapper ###
-/public/assets/
-/assets/vendor/
-###< symfony/asset-mapper ###
+# OS generated files #
+######################
+.DS_Store
+Thumbs.db
+
+# Composer files
+composer.phar
+
+# Log and temp files
+*.log
+*.cache
+*.tmp
+
+# macOS generated files
+.AppleDouble
+.LSOverride
+
+# Windows generated files
+Desktop.ini
+$RECYCLE.BIN/
+
+# Backup files
+*.bak
+*.swp
+*.swo
+*~
+
+# Test result files
+/test_output/
+
+# Coverage reports
+/coverage/
