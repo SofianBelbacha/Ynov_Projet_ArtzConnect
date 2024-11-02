@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+
+/* Variables de couleur */
+:root {
+  --control-color: rgba(0, 0, 0, 0.5);
+  --control-color-hover: rgba(0, 0, 0, 0.8);
+}
+
+/* Navbar Styling */
+#mainNav.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: transparent; /* Transparente pour se fondre dans la vidéo */
+  box-shadow: none;
+  z-index: 10;
+}
+
+#mainNav .navbar-brand {
+  font-family: "Amatic SC", "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 700;
+  font-size: 36px;
+}
+
+
+#mainNav .navbar-brand,
+#mainNav .nav-link {
+  color: #fff; /* Texte blanc pour contraste sur vidéo */
+}
+
+#mainNav .navbar-toggler {
+  border-color: transparent;
+}
+
+#mainNav .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Liens de la navbar */
+.nav-item .nav-link {
+  color: #fff;
+  margin-right: 1rem; /* Espace restauré entre les liens */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  background-color: rgba(255, 255, 255, 0.9); /* Légèrement transparent */
+  border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  color: #333;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: rgba(240, 240, 240, 0.9);
+}
+
+/* Masthead Styling (Carousel Vidéo en pleine page) */
+.masthead {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Pleine hauteur */
+  background: #000;
+  overflow: hidden;
+}
+
+#videoCarousel.carousel {
+  height: 100vh; /* 100% de la hauteur de l’écran */
+}
+
+.videoCarousel .carousel-inner {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.videoCarousel .carousel-item {
+  height: 100vh;
+  display: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.videoCarousel .carousel-item.active {
+  display: block;
+}
+
+.videoCarousel .carousel-item video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover; /* Couvre toute la zone visible */
+}
+
+/* Carousel Control Styling */
+.videoCarousel .carousel-control-prev,
+.videoCarousel .carousel-control-next {
+  width: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.videoCarousel .carousel-control-prev:hover,
+.videoCarousel .carousel-control-next:hover {
+  opacity: 1;
+}
+
+.videoCarousel .carousel-control-prev-icon,
+.videoCarousel .carousel-control-next-icon {
+  background-color: var(--control-color);
+  width: 2rem;
+  height: 2rem;
+}
+
+.videoCarousel .carousel-control-prev-icon:hover,
+.videoCarousel .carousel-control-next-icon:hover {
+  background-color: var(--control-color-hover);
+}
+
+/* Video Styling */
+video.d-block.w-100 {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+      padding: 0.5rem;
+  }
+  .dropdown-menu {
+      min-width: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .videoCarousel .carousel-control-prev,
+  .videoCarousel .carousel-control-next {
+      width: 10%;
+  }
+}
+
+@media (max-width: 576px) {
+  #mainNav {
+      padding: 0.5rem 1rem;
+  }
+  .dropdown-menu {
+      font-size: 0.8rem;
+  }
+}
+
+.search-container {
+  display: flex; /* Utiliser Flexbox pour aligner les éléments */
+  align-items: center; /* Centrer verticalement les éléments */
+  justify-content: center; /* Centrer horizontalement tous les éléments */
+  position: relative; /* Position relative pour contrôler les icônes */
+  background-color: white; /* Couleur de fond de la barre de recherche */
+  border-radius: 50px; /* Coins arrondis */
+  padding: 10px 20px; /* Espace intérieur */
+  width: 200px; /* Largeur initiale de la barre de recherche */
+  transition: all 0.3s ease; /* Transition pour tous les changements de propriété */
+}
+
+/* Style pour le conteneur du logo */
+.logo-container {
+  flex: 0 0 auto; /* Ne pas permettre à l'élément de grandir ou de se rétrécir */
+  margin-right: 10px; /* Espacement autour du logo */
+}
+
+/* Pour le logo */
+.logo {
+  max-height: 50px; /* Ajustez la hauteur du logo selon vos besoins */
+  max-width: 100%; /* Pour éviter que le logo dépasse le conteneur */
+}
+
+.search-container.active {
+  width: 300px; /* Largeur de la barre de recherche quand elle est active */
+}
+
+.search-input {
+  background: transparent; /* Fond transparent */
+  border: none; /* Pas de bordure */
+  color: #404040; /* Couleur du texte */
+  outline: none; /* Pas de contour */
+  width: 100%; /* Prendre toute la largeur disponible */
+  font-size: 16px;
+  padding-left: 30px; /* Espacement pour l'icône */
+  font-family: "Merriweather Sans", sans-serif;
+}
+
+/* Ajoute du style aux placeholders */
+.search-input::placeholder {
+  color: #b3b3b3; /* Couleur du placeholder */
+}
+
+.search-icon {
+  position: absolute; /* Position absolue pour la placer à l'intérieur du champ */
+  left: 10px; /* Déplacement à gauche */
+  fill: #404040; /* Couleur de l'icône */
+  width: 22px; /* Largeur augmentée */
+  height: 22px; /* Hauteur augmentée */
+}
+
+/* Séparateur vertical */
+.separator {
+  color: #404040;
+  margin: 0 10px; /* Espace autour du séparateur */
+}
+
+/* Icône de navigation "parcourir" */
+.browse-icon {
+  fill: #404040; /* Couleur de l'icône */
+  cursor: pointer; /* Curseur en forme de main pour indiquer qu'il est cliquable */
+  transition: fill 0.3s;
+  width: 22px; /* Largeur augmentée */
+  height: 22px; /* Hauteur augmentée */
+}
+
+.search-container.collapsed .separator,
+.search-container.collapsed .browse-icon {
+    display: none;
+}
+
+.clear-icon {
+  fill: #404040; /* Couleur de l'icône */
+  cursor: pointer; /* Curseur en forme de main pour indiquer qu'il est cliquable */
+  transition: fill 0.3s;
+  width: 27px; /* Largeur de l'icône de croix */
+  height: 27px; /* Hauteur de l'icône de croix */
+  margin-left: 10px; /* Espace autour de l'icône de croix */
+}
+
+
+.btn-connexion, .btn-demarrer{
+  background-color: #fff; /* Couleur de fond de la barre de recherche */
+  border-radius: 50px; /* Coins arrondis */
+  padding: 10px 20px; /* Espace intérieur */
+}
+
+.btn-connexion:hover{
+  background-color: #fff;
+}
+
+.btn-demarrer:hover{
+  background-color: #000;
+  color: #fff;
+}
+
+.logo-container-mobile{
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .logo-container-mobile{
+    display: block;
+  }
+  .logo-container{
+    display: none;
+  }
+  .nav-element{
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+  .nav-element > *{
+    margin-bottom: 10px;
+  }
+  .other-element-nav{
+    flex-direction: column;
+  }
+  .other-element-nav > *{
+    margin-bottom: 10px;
+  }
+  .other-element-nav a{
+    width: 200px;
+  }
+}
+
+.navbar-toggler {
+  position: absolute; /* Assure que le bouton est en position absolue */
+  top: 15px; /* Ajustez selon votre design */
+  right: 15px; /* Ajustez selon votre design */
+  z-index: 999; /* Assurez-vous qu'il est au-dessus des autres éléments */
+}
+
+.navbar-open {
+  background-color: white !important; /* Fond blanc */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optionnel : ajout d'une ombre pour un effet de profondeur */
+}
+
+.navbar-open a, .navbar-open li {
+  color: #000 !important;
+}
+
+.navbar-open .search-container {
+  background-color: #000;
+  color: #fff;
+}
+
+.navbar-open .search-container input, 
+.navbar-open .search-container .browse-icon,
+.navbar-open .search-container .clear-icon,
+.navbar-open .search-container .search-icon  {
+  color: #fff;
+  fill: #fff;
+}
+
+.navbar-open .other-element-nav a.btn-connexion{
+  background-color: #000;
+  color: #fff !important;
+}
+
+.navbar-open .navbar-toggler-icon {
+  background-image: var(--bs-navbar-toggler-icon-bg) !important;
+}
+
+.content-overlay {
+  position: absolute; /* Positionnement absolu pour superposer le contenu */
+  top: 50%; /* Centrer verticalement */
+  left: 50%; /* Centrer horizontalement */
+  transform: translate(-50%, -50%); /* Déplacer pour centrer */
+  color: white; /* Couleur du texte */
+  text-align: right; /* Centrer le texte */
+  padding: 20px; /* Espacement autour du contenu */
+}
+
+/* Classe appliquée au nav lors du scroll */
+#mainNav.scrolled {
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.6s ease, box-shadow 0.6s ease;
+}
+
+#mainNav.scrolled  .nav-link,
+#mainNav.scrolled  .navbar-brand {
+  color: black;
+}
+
+#mainNav.scrolled  .btn-connexion,
+#mainNav.scrolled  .search-container {
+  border: 1px solid black;
+}
+
+/* Initialisation de la couleur pour éviter les conflits */
+
+@media (min-width: 768px) {
+  header.masthead .masthead-subheading {
+    font-size: 2.25rem;
+    font-style: italic;
+    line-height: 2.25rem;
+    margin-bottom: 2rem;
+  }
+}
+header.masthead .masthead-subheading {
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@media (min-width: 768px) {
+  header.masthead .masthead-heading {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 4.5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+header.masthead .masthead-heading {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 3.25rem;
+  margin-bottom: 2rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.about-background {
+  background-image: url('../image/g.jpeg'); /* Chemin absolu sans "public" */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* Ajustez la hauteur selon vos besoins */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-background .content-overlay {
+  text-align: center;
+  color: #fff;
+  /* Ajustez le style selon vos besoins */
+}
+
+.about-background .content-overlay .masthead-heading {
+  font-family: "Amatic SC", "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 150px;
+  line-height: 1.1; /* Ajustez cette valeur pour réduire ou augmenter l'espacement entre les lignes */
+  margin-bottom: 20px; /* Ajoutez un espacement entre les lignes de texte */
+}
+
+.about-background .content-overlay .masthead-heading:nth-of-type(1) {
+  align-self: flex-start;
+}
+
+.about-background .content-overlay .masthead-heading:nth-of-type(2) {
+  align-self: flex-end;
+}
+
+[data-aos="fade-right"], [data-aos="fade-left"] {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s ease-in-out;
+}
+
+.team-photo {
+  width: 160px; /* largeur personnalisée */
+  height: 160px; /* hauteur personnalisée */
+}
+
+/* Style pour le bouton lorsque l'accordéon est ouvert */
+.accordion-button:not(.collapsed) {
+    background-color: #000; /* Couleur de fond du bouton ouvert */
+    color: #ffffff; /* Couleur du texte du bouton ouvert */
+}
+
+/* Pour ajouter une transition douce */
+.accordion-button {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .about-background .content-overlay .masthead-heading {
+    font-size: 60px; /* Taille de police pour petits écrans */
+    margin-bottom: 15px; /* Ajustement de l'espacement */
+  }
+}
+
+@media (max-width: 576px) {
+  .about-background .content-overlay .masthead-heading {
+    font-size: 40px; /* Taille de police pour très petits écrans */
+    text-align: center; /* Centrer le texte sur les petits écrans */
+  }
+}
+
+@media (max-width: 576px) {
+  .content-overlay {
+    text-align: center; /* Centrer le texte sur les petits écrans */
+  }
+}
+
+@media (max-width: 992px) {
+  .about-background .content-overlay .masthead-heading {
+    font-size: 80px; /* Taille de police pour écrans moyens */
+  }
+}
+
+@media (max-width: 768px) {
+  .about-background .content-overlay .masthead-heading {
+    font-size: 60px; /* Taille de police pour petits écrans */
+    margin-bottom: 15px; /* Ajustement de l'espacement */
+  }
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 20px; /* Ajustez la position verticale */
+  left: 50%; /* Centrer horizontalement */
+  transform: translateX(-50%); /* Centrer le texte */
+  text-align: center; /* Centrer le texte */
+  padding: 10px; /* Espacement autour du texte */
+  background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour le texte */
+  color: white; /* Couleur du texte */
+}
+
+@media (max-width: 576px) {
+  .carousel-caption h5 {
+      font-size: 1.5rem; /* Taille de police pour les petits écrans */
+  }
+  
+  .carousel-caption p {
+      font-size: 1rem; /* Taille de police pour le texte */
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .carousel-caption h5 {
+      font-size: 2rem; /* Taille de police pour les écrans moyens */
+  }
+
+  .carousel-caption p {
+      font-size: 1.2rem; /* Ajustez la taille du texte */
+  }
+}
+
+@media (min-width: 768px) {
+  .carousel-caption h5 {
+      font-size: 2.5rem; /* Taille de police pour les grands écrans */
+  }
+
+  .carousel-caption p {
+      font-size: 1.5rem; /* Taille de police pour le texte */
+  }
+}

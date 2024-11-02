@@ -2,16 +2,81 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>ArtzConnect - {% block title %}{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
         {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-expand-lg" id="mainNav">
+        <div class="container-xl px-4 px-lg-5">
+            <div class="logo-container-mobile">
+                <a class="navbar-brand mx-auto" href="{{ path('app_main_index') }}">ArtzConnect</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <div class="nav-element d-flex justify-content-between align-items-center w-100">
+                    <!-- Liens de navigation à gauche -->
+                    <div class="d-flex align-items-center">
+                        <ul class="navbar-nav me-auto my-2 my-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_about_index') }}">About</a>
+                            </li>
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="dropdownMenuLink" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Catégorie
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li><a class="dropdown-item" href="#lecture">Lecture</a></li>
+                                    <li><a class="dropdown-item" href="#music">Music</a></li>
+                                    <li><a class="dropdown-item" href="#dessin">Dessin</a></li>
+                                </ul>
+                            </div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#portfolio">Artistes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_contact_index') }}">Contact</a>
+                            </li>
+                        </ul>
+                    </div>        
+                    <!-- Logo centré -->
+                    <div class="logo-container">
+                        <a class="navbar-brand mx-auto" href="{{ path('app_main_index') }}">ArtzConnect</a>
+                    </div>
+                    <div class="d-flex other-element-nav">
+                    <!-- Zone de recherche et bouton de connexion à droite -->
+                        <div class="search-container collapsed me-3">
+                            <!-- SVG de l'icône de recherche -->
+                            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                <path d="M10.533 1.27893C5.35215 1.27893 1.12598 5.41887 1.12598 10.5579C1.12598 15.697 5.35215 19.8369 10.533 19.8369C12.767 19.8369 14.8235 19.0671 16.4402 17.7794L20.7929 22.132C21.1834 22.5226 21.8166 22.5226 22.2071 22.132C22.5976 21.7415 22.5976 21.1083 22.2071 20.7178L17.8634 16.3741C19.1616 14.7849 19.94 12.7634 19.94 10.5579C19.94 5.41887 15.7138 1.27893 10.533 1.27893ZM3.12598 10.5579C3.12598 6.55226 6.42768 3.27893 10.533 3.27893C14.6383 3.27893 17.94 6.55226 17.94 10.5579C17.94 14.5636 14.6383 17.8369 10.533 17.8369C6.42768 17.8369 3.12598 14.5636 3.12598 10.5579Z"></path>
+                            </svg>
+                            <input type="text" class="search-input" placeholder="What do you want to listen to?" />
+                            
+                            <!-- Cette section sera cachée par défaut -->
+                            <span class="separator">|</span>
+                            <svg class="browse-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                <path d="M4 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4H4V2zM1.513 9.37A1 1 0 0 1 2.291 9H21.71a1 1 0 0 1 .978 1.208l-2.17 10.208A2 2 0 0 1 18.562 22H5.438a2 2 0 0 1-1.956-1.584l-2.17-10.208a1 1 0 0 1 .201-.837zM12 17.834c1.933 0 3.5-1.044 3.5-2.333 0-1.289-1.567-2.333-3.5-2.333S8.5 14.21 8.5 15.5c0 1.289 1.567 2.333 3.5 2.333z"></path>
+                            </svg>
+
+                            <!-- Icône de croix -->
+                            <svg class="clear-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" style="display: none;">
+                                <path d="M12 10.586l5.293-5.293 1.414 1.414L13.414 12l5.293 5.293-1.414 1.414L12 13.414l-5.293 5.293-1.414-1.414L10.586 12 5.293 6.707 6.707 5.293z"></path>
+                            </svg>
+                        </div>
+                        <a class="btn btn-connexion" href="#login">Connexion</a>
+                    </div>
+                </div>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    {% block body %}{% endblock %}
+</body>
 </html>

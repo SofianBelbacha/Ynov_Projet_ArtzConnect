@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue !{% endblock %}
+
+{% block body %}
+<header class="masthead">
+    <!-- Carousel Videos -->
+    <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000" data-bs-pause="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <video class="d-block w-100" autoplay muted loop>
+                    <source src="{{ asset('assets/video/musician_header_video.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="container-xl content-overlay">
+                    <div class="masthead-subheading">Explore, Connect & Create</div>
+                    <div class="masthead-heading text-uppercase">Bienvenue sur ArtzConnect</div>
+                    <a class="btn btn-demarrer" href="#login">Démarrer</a>
+                </div>            
+            </div>
+            <div class="carousel-item">
+                <video class="d-block w-100" autoplay muted loop>
+                    <source src="{{ asset('assets/video/writer_header_video.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="container-xl content-overlay">
+                    <div class="masthead-subheading">Un Espace Unique Pour Les Artistes</div>
+                    <div class="masthead-heading text-uppercase">Exprimez Votre Talent</div>
+                    <a class="btn btn-demarrer" href="#login">Démarrer</a>
+                </div>            
+            </div>
+            <div class="carousel-item">
+                <video class="d-block w-100" autoplay muted loop>
+                    <source src="{{ asset('assets/video/designer_header_video.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="container-xl content-overlay">
+                    <div class="masthead-subheading">Multipliez Les Possibilités Créatives</div>
+                    <div class="masthead-heading text-uppercase">Créez Avec ArtzConnect</div>
+                    <a class="btn btn-demarrer" href="#login">Démarrer</a>
+                </div>            
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
