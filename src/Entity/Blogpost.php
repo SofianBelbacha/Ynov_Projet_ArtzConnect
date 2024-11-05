@@ -25,7 +25,7 @@ class Blogpost
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Utilisateur $utilisateur = null;
+    private ?User $utilisateur = null;
 
     public function getId(): ?int
     {
@@ -68,12 +68,12 @@ class Blogpost
         return $this;
     }
 
-    public function getUtilisateur(): ?Utilisateur
+    public function getUtilisateur(): ?User
     {
         return $this->utilisateur;
     }
 
-    public function setUtilisateur(?Utilisateur $utilisateur): static
+    public function setUtilisateur(?User $utilisateur): static
     {
         $this->utilisateur = $utilisateur;
 

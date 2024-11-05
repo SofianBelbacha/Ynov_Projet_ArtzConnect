@@ -31,7 +31,7 @@ class Commentaire
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Utilisateur $utilisateur = null;
+    private ?User $utilisateur = null;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'commentaires')]
     private ?self $parentCommentaire = null;
@@ -100,12 +100,12 @@ class Commentaire
         return $this;
     }
 
-    public function getUtilisateur(): ?Utilisateur
+    public function getUtilisateur(): ?User
     {
         return $this->utilisateur;
     }
 
-    public function setUtilisateur(?Utilisateur $utilisateur): static
+    public function setUtilisateur(?User $utilisateur): static
     {
         $this->utilisateur = $utilisateur;
 
