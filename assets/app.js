@@ -1,26 +1,22 @@
-import './bootstrap.js';
-/*
- * Welcome to your app's main JavaScript file!
- *
- * This file will be included onto the page via the importmap() Twig function,
- * which should already be in your base.html.twig.
- */
-// Importer Bootstrap Icons via CDN
-//import 'bootstrap-icons/font/bootstrap-icons.css';
+// assets/app.js
+import './bootstrap.js';  // Initialisation de Bootstrap et autres
 
-// Importer SimpleLightbox CSS
-//import 'simplelightbox/dist/simple-lightbox.min.css';
+// Importation des fichiers CSS
 import './styles/app.css';
 import './styles/main.css';
-import './bootstrap';
+import './styles/Interface_user.css';
+
+// Importation des fichiers JS personnalisés
 import './js/main.js';
+import './js/interface_user.js';
+
+// Initialisation de AOS (Animation On Scroll)
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 AOS.init({
     duration: 5000, // Durée de l'animation en millisecondes
-    once: true // Animation jouée une seule fois
+    once: true      // Animation jouée une seule fois
 });
-
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

@@ -53,6 +53,12 @@ Encore
         config.corejs = '3.38';
     })
 
+    Encore.copyFiles({
+        from: './assets/images',
+        to: 'images/[path][name].[ext]'
+    })
+    
+
     // enables Sass/SCSS support
     //.enableSassLoader()
 

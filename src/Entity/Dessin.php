@@ -11,6 +11,11 @@ class Dessin extends Oeuvre
     #[ORM\Column(length: 100)]
     private ?string $technique = null;
 
+    public function __construct()
+    {
+        parent::__construct(); // Appel au constructeur parent
+    }
+
     public function getTechnique(): ?string
     {
         return $this->technique;

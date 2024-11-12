@@ -5,12 +5,18 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+
+#[ORM\InheritanceType('JOINED')] // Stratégie d'héritage par table jointe
+#[ORM\DiscriminatorColumn(name: 'type', type: 'string')]
+#[ORM\DiscriminatorMap(['user' => User::class, 'artist' => Artist::class])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -39,7 +45,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $prenom = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeInterface $dateInscription = null;
 
     #[ORM\Column]
@@ -50,6 +56,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $derniereConnexion = null;
+
+    #[ORM\Column]
+    private bool $isVerified = false;
+
+    public function __construct()
+    {
+        $this->dateInscription = new \DateTimeImmutable('now');
+        $this->derniereConnexion = new \DateTime('now');
+    }
 
     public function getId(): ?int
     {
@@ -194,6 +209,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDerniereConnexion(\DateTimeInterface $derniereConnexion): static
     {
         $this->derniereConnexion = $derniereConnexion;
+
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setVerified(bool $isVerified): static
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }

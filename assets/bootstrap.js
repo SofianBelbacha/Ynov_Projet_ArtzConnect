@@ -1,30 +1,27 @@
 // assets/bootstrap.js
 import { startStimulusApp } from '@symfony/stimulus-bridge';
 import * as Turbo from "@hotwired/turbo";
-Turbo.start();
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Tooltip } from 'bootstrap';
+Turbo.start();  // Initialisation de Turbo
 
+import 'bootstrap/dist/css/bootstrap.min.css';  // Importation de Bootstrap CSS
+import { Tooltip } from 'bootstrap';  // Importation de Bootstrap Tooltip
+import AOS from 'aos';  // Importation de AOS (Animation On Scroll)
+import 'aos/dist/aos.css';  // Styles AOS
 
-// Registers Stimulus controllers from controllers.json and in the controllers/ directory
+// Démarre l'application Stimulus et charge les contrôleurs depuis le répertoire controllers
 export const app = startStimulusApp(require.context(
-    '@symfony/stimulus-bridge/lazy-controller-loader!./controllers',
-    true,
-    /\.(j|t)sx?$/
+    '@symfony/stimulus-bridge/lazy-controller-loader!./controllers',  // Charge tous les contrôleurs depuis assets/controllers
+    true, // Inclut les sous-dossiers
+    /\.(j|t)sx?$/  // Charge tous les fichiers JS/TS
 ));
 
-
-// Import uniquement les composants nécessaires de Bootstrap
-
-// Initialisation des tooltips après le chargement via Turbo
-document.addEventListener('turbo:load', function (e) {
-    // Activer les tooltips Bootstrap globalement
-    let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+// Initialisation des tooltips Bootstrap après le chargement de la page via Turbo
+document.addEventListener('turbo:load', function () {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new Tooltip(tooltipTriggerEl);
     });
 });
 
-
-// register any custom, 3rd party controllers here
-// app.register('some_controller_name', SomeImportedController);
+// Initialisation de AOS
+AOS.init();

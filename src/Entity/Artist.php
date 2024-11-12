@@ -9,17 +9,13 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArtistRepository::class)]
-class Artist
+class Artist extends User
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $nomComplet = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $biographie = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -33,12 +29,8 @@ class Artist
 
     public function __construct()
     {
+        parent::__construct(); // Appel au constructeur parent
         $this->artisteOeuvres = new ArrayCollection();
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 
     public function getNomComplet(): ?string
