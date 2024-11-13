@@ -64,6 +64,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->dateInscription = new \DateTimeImmutable('now');
         $this->derniereConnexion = new \DateTime('now');
+        $this->roles = ['ROLE_USER'];
     }
 
     public function getId(): ?int

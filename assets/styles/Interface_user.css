@@ -271,9 +271,7 @@ button:not(:disabled) {
 }
 
 :not(.btn-check)+.btn:active {
-    color: var(--bs-btn-active-color);
-    background-color: var(--bs-btn-active-bg);
-    border-color: var(--bs-btn-active-border-color)
+    background-color: #fff;
 }
 
 .layoutSidenav_content .btn:first-child:active:focus-visible,

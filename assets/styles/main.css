@@ -310,9 +310,24 @@ video.d-block.w-100 {
   fill: #fff;
 }
 
-.navbar-open .other-element-nav a.btn-connexion{
+.navbar-open .other-element-nav a.btn-connexion,
+.navbar-open .other-element-nav div.btn-connexion{
   background-color: #000;
   color: #fff !important;
+}
+
+div.btn-connexion .rounded-circle{
+  border: 1px solid #000;
+}
+
+div.btn-connexion svg{
+  width: 24px;
+  height: 24px;
+}
+
+div.btn-connexion a{
+  text-decoration: none;
+  color: #000;
 }
 
 .navbar-open .navbar-toggler-icon {
@@ -554,4 +569,10 @@ section.login-section, section.register-section{
 /* Optionnel : masquer le bandeau après quelques secondes */
 .flash-message.hide {
   display: none;
+}
+
+.texte-or {
+  background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
