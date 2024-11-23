@@ -14,6 +14,9 @@ import './js/interface_user.js';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+import './js/main_GSAP.js';
+import './js/main_Three.js';
+
 AOS.init({
     duration: 5000, // Durée de l'animation en millisecondes
     once: true      // Animation jouée une seule fois

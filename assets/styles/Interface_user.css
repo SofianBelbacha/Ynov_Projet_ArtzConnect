@@ -546,11 +546,11 @@ button:not(:disabled) {
     display: none !important
 }
 
-.justify-content-between {
+.layoutSidenav .justify-content-between {
     justify-content: space-between !important
 }
 
-.align-items-center {
+.layoutSidenav .align-items-center {
     align-items: center !important
 }
 

@@ -24,6 +24,8 @@
     "dependencies": {
         "@hotwired/turbo": "^8.0.12",
         "@symfony/stimulus-bridge": "^3.2.2",
-        "aos": "^2.3.4"
+        "aos": "^2.3.4",
+        "gsap": "^3.12.5",
+        "three": "^0.170.0"
     }
 }

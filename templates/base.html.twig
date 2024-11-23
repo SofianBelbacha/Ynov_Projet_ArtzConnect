@@ -14,6 +14,7 @@
         {% endblock %}
     </head>
 <body>
+    <canvas id="background-canvas"></canvas>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-expand-lg" id="mainNav">
         <div class="container-xl px-4 px-lg-5">
             <div class="logo-container-mobile">
@@ -38,7 +39,7 @@
                                 </ul>
                             </div>
                             <li class="nav-item">
-                                <a class="nav-link" href="#portfolio">Artistes</a>
+                                <a class="nav-link" href="{{ path('app_blog_index') }}">Blog</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('app_contact_index') }}">Contact</a>
@@ -70,17 +71,19 @@
                             </svg>
                         </div>
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <a class="btn btn-connexion" href="{{ path('app_login_index') }}">Connexion</a>
-                        {% else %}
                             <div class="btn btn-connexion d-flex nav-item dropdown">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/></svg>                            
-                                <a class="ms-2 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" href="{{ path('app_login_index') }}">Connexion</a>
+                                <a class="ms-2 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ current_user().email | length > 15 ? current_user().email | slice(0, 12) ~ '...' : current_user().email }}
+                                </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <li><a class="dropdown-item" href="#lecture">Lecture</a></li>
                                     <li><a class="dropdown-item" href="#music">Music</a></li>
                                     <li><a class="dropdown-item" href="#dessin">Dessin</a></li>
                                 </ul>
                             </div>
+                        {% else %}
+                            <a class="btn btn-connexion" href="{{ path('app_login_index') }}">Connexion</a>
                         {% endif %}
                     </div>
                 </div>
