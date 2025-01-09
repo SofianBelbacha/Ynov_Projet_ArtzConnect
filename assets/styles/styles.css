@@ -1,0 +1,38 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000; /* Exemple de fond sombre */
+}
+
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  color: white;
+}
+
+.masthead-text {
+  padding: 20px;
+}
+
+.masthead-3d {
+  width: 50%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+canvas#background-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Derrière le contenu principal */
+}
